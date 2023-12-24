@@ -1,0 +1,46 @@
+@startuml
+
+skinparam classAttributeIconSize 0
+
+class Main {
+  + main(String[]): void
+}
+
+class Daire {
+  - apartmentNumber: int
+  + Daire(String, int, int)
+  + displayInfo(): void
+  + compareTo(Daire): int
+}
+
+class Bina {
+  - numberOfFloors: int
+  + Bina(String, int)
+  + displayInfo(): void
+}
+
+class Kiraci {
+  - evSahibi: Bina
+  + Kiraci(String, String, evSahibi)
+  + displayInfo(): void
+}
+
+class EvSahibi {
+  + EvSahibi(String, String, Bina)
+  + displayInfo(): void
+  + addApartment(Daire): void
+}
+
+class Konut {
+  - address: String
+  + Konut(String):
+  + displayInfo(): void
+}
+
+Main ---> Kiraci
+Kiraci ---> Daire
+Bina --> Daire
+Kiraci --> EvSahibi
+Bina <|-- Konut
+
+@enduml
